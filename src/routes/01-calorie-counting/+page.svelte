@@ -9,17 +9,16 @@
     const testRows = testData.split("\n");
     const realRows = realData.split("\n");
 
-    function testSwitchChanged(event) {
+    function testSwitchChanged(event?: { detail: { test: boolean } }) {
         let test = true;
         if (event !== undefined) {
             test = event.detail.test;
         }
 
-        calculateHighestSum(test);
+        calculate(test);
     }
 
-    function calculateHighestSum(test: boolean) {
-
+    function calculate(test: boolean) {
         let rows;
         if (test) {
             rows = testRows;
@@ -42,7 +41,7 @@
         highestSum = Math.max(sum, highestSum);
     }
 
-    calculateHighestSum(true);
+    calculate(true);
 </script>
 
 <h1>Day 1: Calorie Counting</h1>
