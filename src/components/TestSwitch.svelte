@@ -4,13 +4,13 @@
     const dispatch = createEventDispatcher();
 
     function change() {
-        dispatch('change', {test: test});
+        dispatch('change', {isTest: isTest});
     }
 
-    let test = true;
+    let isTest = true;
 </script>
 
 <label>
-    <input type=checkbox bind:checked={test} on:change={change}>
+    <input type=checkbox bind:checked={isTest} on:change={change}>
     Test
 </label>

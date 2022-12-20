@@ -1,32 +1,37 @@
 <script lang="ts">
     import BackToHome from "../../components/BackToHome.svelte";
+    import TestSwitch from "../../components/TestSwitch.svelte";
+
     import testData from "../../data/01-calorie-counting/test.txt?raw";
     import realData from "../../data/01-calorie-counting/real.txt?raw";
-    import TestSwitch from "../../components/TestSwitch.svelte";
 
     let highestSum = 0;
 
     const testRows = testData.split("\n");
     const realRows = realData.split("\n");
 
-    function testSwitchChanged(event?: { detail: { test: boolean } }) {
-        let test = true;
+    // TODO 2nd assignment
+
+    function testSwitchChanged(event?: { detail: { isTest: boolean } }) {
+        let isTest = true;
         if (event !== undefined) {
-            test = event.detail.test;
+            isTest = event.detail.isTest;
         }
 
-        calculate(test);
+        calculate(isTest);
     }
 
-    function calculate(test: boolean) {
+    function calculate(isTest: boolean) {
         let rows;
-        if (test) {
+        if (isTest) {
             rows = testRows;
         } else {
             rows = realRows;
         }
+
         let sum = 0;
         highestSum = 0;
+
         for (let i = 0; i < rows.length; i++) {
             if (i > 0 && rows[i] === "") {
                 highestSum = Math.max(sum, highestSum);
