@@ -1,5 +1,5 @@
 <script lang="ts">
-    import TestSwitch from "../../components/TestSwitch.svelte";
+    import Switch from "../../components/Switch.svelte";
     import BackToHome from "../../components/BackToHome.svelte";
 
     import testData from "../../data/02-rock-paper-scissors/test.txt?raw";
@@ -85,7 +85,7 @@
 
 <h1>Day 2: Rock Paper Scissors</h1>
 
-<TestSwitch on:change={testSwitchChanged}/>
+<Switch on:change={testSwitchChanged}>Test</Switch>
 
 <p>Test answer is: {points}</p>
 
