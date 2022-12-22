@@ -104,6 +104,6 @@
 <Switch on:change={testSwitchChanged}>Test</Switch>
 <Switch on:change={problemSwitchChanged}>Problem 1</Switch>
 
-<p>Test answer is: {highestSum}</p>
+<p>Answer is: {highestSum}</p>
 
 <BackToHome/>

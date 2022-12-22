@@ -8,17 +8,37 @@
     const testRows = testData.split("\n");
     const realRows = realData.split("\n");
 
-    function testSwitchChanged(event?: { detail: { isTest: boolean } }) {
-        let isTest = true;
+    let isTest = true;
+    let problemFirst = true;
+
+    function testSwitchChanged(event?: { detail: { switchValue: boolean } }) {
         if (event !== undefined) {
-            isTest = event.detail.isTest;
+            isTest = event.detail.switchValue;
         }
 
-        calculate(isTest);
+        calculate();
+    }
+
+    function problemSwitchChanged(event?: { detail: { switchValue: boolean } }) {
+        if (event !== undefined) {
+            problemFirst = event.detail.switchValue;
+        }
+
+        calculate();
+    }
+
+    function calculate() {
+        if (problemFirst) {
+            calculateProblem1(isTest);
+            return;
+        }
+
+        calculateProblem2(isTest);
     }
 
     let points = 0;
-    function calculate(isTest: boolean) {
+    function calculateProblem1(isTest: boolean) {
+
         /*
           A = rock
           B = paper
@@ -49,7 +69,6 @@
         matchPoints.set('Z', 3);
 
         for (let i = 0; i < rows.length; i++) {
-            console.log('new round');
             if (rows[i].length <= 0) {
                 continue;
             }
@@ -79,14 +98,20 @@
         }
     }
 
-    calculate(true);
+    function calculateProblem2(isTest: boolean) {
+        // TODO implement
+        points = -1;
+    }
+
+    calculate();
 
 </script>
 
 <h1>Day 2: Rock Paper Scissors</h1>
 
 <Switch on:change={testSwitchChanged}>Test</Switch>
+<Switch on:change={problemSwitchChanged}>Problem 1</Switch>
 
-<p>Test answer is: {points}</p>
+<p>Answer is: {points}</p>
 
 <BackToHome/>
